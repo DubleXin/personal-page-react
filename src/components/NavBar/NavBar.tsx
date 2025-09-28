@@ -19,7 +19,7 @@ function NavBar() {
       <ul className="app__navbar-links">
         {["home", "about", "work", "skills", "contact"].map((s) => (
           <li className="p-text app__flex" key={`link-${s}`}>
-            <a href={`# ${s}`}>{s}</a>
+            <a href={`#${s}`}>{s}</a>
           </li>
         ))}
       </ul>
@@ -54,7 +54,7 @@ function NavBar() {
             <ul>
               {["home", "about", "work", "skills", "contact"].map((s) => (
                 <li className="p-text app__flex" key={`link-${s}`}>
-                  <a href={`# ${s}`} onClick={onMenuStateToggle}>
+                  <a href={`#${s}`} onClick={onMenuStateToggle}>
                     {s}
                   </a>
                 </li>
