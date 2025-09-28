@@ -5,12 +5,12 @@
   justify-content: space-between;
 
   padding: 1rem 2rem;
-  background-color: rgba($color: var(--white-color), $alpha: 0.2);
+  background-color: rgba(var(--white-color), 0.2);
 
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 
-  border: rgba($color: var(--white-color), $alpha: 0.18);
+  border: rgba(var(--white-color), 0.18);
   position: fixed;
   z-index: 10;
 }
@@ -68,7 +68,7 @@
   height: 35px;
   border-radius: 50%;
 
-  background-color: rgba($color: var(--secondary-color), $alpha: 0.5);
+  background-color: rgba(var(--secondary-color), 0.5);
 
   display: flex;
   justify-content: center;
@@ -81,20 +81,20 @@
   }
 
   div {
-    background: rgba(var(--white-color), 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    background: rgba(var(--white-color), 0.7);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
     border-radius: 20px;
     border: 1px solid rgba(var(--white-color), 0.3);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+    box-shadow: 0 8px 32px rgba(var(--black-color), 0.1),
       inset 0 1px 0 rgba(var(--white-color), 0.5),
       inset 0 -1px 0 rgba(var(--white-color), 0.1),
-      inset 0 0 14px 7px rgba(var(--white-color), 0.7);
+      inset 0 0 28px 14px rgba(var(--white-color), 1.4);
     overflow: hidden;
 
     position: fixed;
     top: 0;
-    right: 0;
+    left: 10%;
     bottom: 0;
     padding: 1rem;
 
@@ -114,7 +114,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      align-items: flex-start;
+      align-items: center;
       margin: 0;
       padding: 0;
       width: 100%;
@@ -154,7 +154,7 @@
       background: linear-gradient(
         90deg,
         transparent,
-        rgba(255, 255, 255, 0.8),
+        rgba(var(--white-color), 0.8),
         transparent
       );
     }
@@ -167,9 +167,9 @@
       height: 100%;
       background: linear-gradient(
         180deg,
-        rgba(255, 255, 255, 0.8),
+        rgba(var(--white-color), 0.8),
         transparent,
-        rgba(255, 255, 255, 0.3)
+        rgba(var(--white-color), 0.3)
       );
     }
   }
@@ -177,4 +177,16 @@
   @media screen and (min-width: 900px) {
     display: none;
   }
+}
+.app__bg-overlay {
+  background-color: rgba(var(--black-color), 0.15);
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
 }

@@ -23,13 +23,27 @@ function NavBar() {
           </li>
         ))}
       </ul>
-
+      {toggle && (
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          whileInView={{
+            opacity: [0, 1],
+          }}
+          transition={{
+            duration: 0.3,
+            ease: "linear",
+          }}
+          className="app__bg-overlay"
+        />
+      )}
       <div className="app__navbar-menu">
         <HiMenuAlt4 onClick={onMenuStateToggle} />
         {toggle && (
           <motion.div
             initial={{ opacity: 0 }}
-            whileInView={{ x: [300, 0], opacity: [0.9, 1] }}
+            whileInView={{ scale: [0, 1], opacity: [0.9, 1] }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{
               duration: 0.85,
