@@ -4,6 +4,7 @@ import { images } from "../../constants";
 import { HiMenuAlt4, HiX } from "react-icons/hi";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { TABS } from "../../constants";
 
 function NavBar() {
   const [toggle, setToggle] = useState(false);
@@ -17,7 +18,7 @@ function NavBar() {
       </div>
 
       <ul className="app__navbar-links">
-        {["home", "about", "work", "skills", "contact"].map((s) => (
+        {TABS.map((s) => (
           <li className="p-text app__flex" key={`link-${s}`}>
             <a href={`#${s}`}>{s}</a>
           </li>
@@ -52,7 +53,7 @@ function NavBar() {
           >
             <HiX onClick={onMenuStateToggle} />
             <ul>
-              {["home", "about", "work", "skills", "contact"].map((s) => (
+              {TABS.map((s) => (
                 <li className="p-text app__flex" key={`link-${s}`}>
                   <a href={`#${s}`} onClick={onMenuStateToggle}>
                     {s}

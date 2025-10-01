@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { images } from "../../constants";
 import axios from "axios";
+import { urlFor } from "../../../lib/sanityPublic/client";
+import { AppWrap } from "../../wrapper";
 
 type AboutsType = {
   title: string;
@@ -10,13 +12,15 @@ type AboutsType = {
   imgUrl: string;
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 function About() {
   const [abouts, setAbouts] = useState<AboutsType[]>([]);
 
   useEffect(() => {
     const fetchAbouts = async () => {
       try {
-        const res = await axios.get<AboutsType[]>("/api/createAbout");
+        const res = await axios.get<AboutsType[]>("/api/getAbout");
+
         if (Array.isArray(res.data)) {
           setAbouts(res.data);
         } else {
@@ -66,7 +70,7 @@ function About() {
               type: "tween",
             }}
           >
-            <img src={s.imgUrl} alt={`profile image ${s.title}`} />
+            <img src={urlFor(s.imgUrl)} alt={`profile image ${s.title}`} />
             <h2
               className="bold-text"
               style={{
@@ -90,4 +94,5 @@ function About() {
   );
 }
 
-export default About;
+// eslint-disable-next-line react-refresh/only-export-components
+export default AppWrap(About, "about");
