@@ -4,7 +4,6 @@ const WORKS = [
   "EJS",
   "SQL",
   "Node",
-  "contact",
   "TypeScript",
   "Vercel",
   "All",

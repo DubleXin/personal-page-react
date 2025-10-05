@@ -10,8 +10,9 @@ export default async function handler(req: Req, res: Res) {
 
   try {
     await client.fetch(query).then((data) => {
-      res.status(200).json(data);
+      return res.status(200).json(data);
     });
+
     res.status(404);
   } catch (err: unknown) {
     if (err instanceof Error) {
