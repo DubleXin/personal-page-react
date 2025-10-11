@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { images } from "../../constants";
 import axios from "axios";
 import { urlFor } from "../../../lib/sanityPublic/client";
-import { AppWrap } from "../../wrapper";
+import { AppWrap, MotionWrap } from "../../wrapper";
 
 type AboutsType = {
   title: string;
@@ -44,7 +44,7 @@ function About() {
   }, []);
 
   return (
-    <div className="app__about">
+    <div>
       <h2 className="head-text">
         I Know that <span>Good Development</span> <br /> means{" "}
         <span>Good Business</span>
@@ -95,4 +95,8 @@ function About() {
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
-export default AppWrap(About, "about");
+export default AppWrap(
+  MotionWrap(About, "app__about"),
+  "about",
+  "app__whitebg"
+);

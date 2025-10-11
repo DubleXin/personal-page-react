@@ -2,7 +2,7 @@ import "./Work.scss";
 import { urlFor } from "../../../lib/sanityPublic/client";
 import { AnimatePresence, motion, stagger } from "framer-motion";
 import { WORKS } from "../../constants";
-import { AppWrap } from "../../wrapper";
+import { AppWrap, MotionWrap } from "../../wrapper";
 import { useEffect, useState } from "react";
 import type { WorkId } from "../../constants/workTags";
 import axios from "axios";
@@ -65,7 +65,7 @@ function Work() {
   }
   const displayFilter = pendingFilter.length > 0 ? pendingFilter : filter;
   return (
-    <div className="app__works">
+    <div>
       <h2 className="head-text">
         My personal <span>Highlights</span>
       </h2>
@@ -198,4 +198,4 @@ function Work() {
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
-export default AppWrap(Work, "work");
+export default AppWrap(MotionWrap(Work, "app__work"), "work", "app__primarybg");
