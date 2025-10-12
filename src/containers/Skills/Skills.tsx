@@ -5,7 +5,6 @@ import { AppWrap, MotionWrap } from "../../wrapper";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Tooltip } from "react-tooltip";
-//import { Tooltip } from "react-tooltip";
 
 type SkillType = {
   name: string;
