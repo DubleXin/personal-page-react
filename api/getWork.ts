@@ -1,4 +1,4 @@
-import { client } from "../lib/sanity/client.js";
+import { client } from "../lib/sanity/clientCdn.js";
 import { Req, Res } from "../lib/vercel/apiTypes.js";
 
 const query = '*[_type == "works"]';

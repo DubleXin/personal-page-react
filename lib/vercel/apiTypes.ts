@@ -1,10 +1,6 @@
-export type Req = {
+export type Req<T = unknown> = {
   method?: string;
-  body?: {
-    title?: string;
-    description?: string;
-    imgUrl?: string;
-  };
+  body?: T;
 };
 
 export type Res = {

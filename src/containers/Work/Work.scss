@@ -2,7 +2,6 @@
   flex: 1;
   width: 100%;
   flex-direction: column;
-  //overflow: hidden;
 }
 .app__work-filter {
   display: flex;
@@ -12,6 +11,7 @@
   flex-wrap: wrap;
   gap: 0.5rem;
   margin: 4rem 0rem 2rem;
+  max-width: 100%;
 
   .app__work-filter-item {
     padding: 0.5rem 1rem;
@@ -40,6 +40,7 @@
 }
 .app__work-portfolio {
   display: flex;
+  max-width: 100%;
   flex-wrap: wrap;
   .app__work-item {
     width: 270px;
@@ -61,7 +62,7 @@
       padding: 1.25rem;
       border-radius: 0.75rem;
     }
-    @media screen and (max-width: 300px) {
+    @media screen and (max-width: 350px) {
       width: 100%;
       margin: 1rem;
     }
