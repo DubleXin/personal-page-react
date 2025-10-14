@@ -38,7 +38,7 @@ function Footer() {
     const doc = {
       _type: "contact",
       name: name,
-      email: message,
+      email: email,
       message: message,
     };
 
