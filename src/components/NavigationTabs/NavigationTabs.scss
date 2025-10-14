@@ -1,0 +1,16 @@
+.app__navigation-dot-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem 0rem;
+  margin-right: 2rem;
+}
+.app__navigation-dot {
+  width: 1rem;
+  height: 1rem;
+  background-color: rgb(var(--gray-color));
+  border-radius: 50%;
+}
+
+.active-dot {
+  background-color: rgb(var(--secondary-color));
+}
