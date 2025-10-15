@@ -57,7 +57,7 @@
     &:hover {
       box-shadow: 0 0 25px rgba(var(--black-color), 0.2);
     }
-    @media screen and (min-height: 2000px) {
+    @media screen and (min-width: 2000px) {
       width: 470px;
       padding: 1.25rem;
       border-radius: 0.75rem;
@@ -79,7 +79,7 @@
     border-radius: 0.5rem;
   }
 
-  @media screen and (min-height: 2000px) {
+  @media screen and (min-width: 2000px) {
     height: 350px;
   }
 }
@@ -128,5 +128,8 @@
     border-radius: 10px;
     background-color: rgb(var(--white-color));
     top: -25px;
+    @media screen and (min-width: 2000px) {
+      top: -50px;
+    }
   }
 }
