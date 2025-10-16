@@ -1,12 +1,12 @@
 import "./Work.scss";
 import { urlFor } from "../../../lib/sanityPublic/client";
 import { AnimatePresence, motion, stagger } from "framer-motion";
-import { WORKS } from "../../constants";
+import { images, WORKS } from "../../constants";
 import { AppWrap, MotionWrap } from "../../wrapper";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { WorkId } from "../../constants/workTags";
-import axios from "axios";
 import { AiFillEye, AiFillGithub } from "react-icons/ai";
+import { useCacheApi } from "../../hooks/useCacheApi";
 
 const cardVariants = {
   visible: {
@@ -36,24 +36,25 @@ function Work() {
   const [filter, setFilter] = useState<WorkId[]>(["All"]);
   const [pendingFilter, setPendingFilter] = useState<WorkId[]>([]);
 
-  const [works, setWorks] = useState<WorkType[]>([]);
-  useEffect(() => {
-    const fetchWorks = async () => {
-      axios
-        .get<WorkType[]>("/api/getWork")
-        .then((res) => {
-          if (Array.isArray(res.data)) return setWorks(res.data);
-          throw new Error("API response is not an array");
-        })
-        .catch((e) =>
-          console.error(
-            `API error while fetching data for 'works' section: ${e}`
-          )
-        );
-    };
-    fetchWorks();
-  }, []);
-  function handleFilter(item: WorkId) {
+  const {
+    data: works,
+    loading,
+    error,
+  } = useCacheApi<WorkType[]>("/api/getWork", "works");
+  const safeWorks =
+    works && Array.isArray(works)
+      ? works
+      : [
+          {
+            title: "Error",
+            description: "error . . .",
+            projectLink: "/home",
+            codeLink: "/home",
+            imgUrl: images.api,
+            tags: ["error"],
+          },
+        ];
+  const handleFilter = (item: WorkId) => {
     setPendingFilter(() => {
       let newFilter = filter.includes(item)
         ? filter.filter((s) => s !== item)
@@ -62,13 +63,20 @@ function Work() {
       return newFilter;
     });
     setFilter([]);
-  }
+  };
   const displayFilter = pendingFilter.length > 0 ? pendingFilter : filter;
+
+  if (loading && !works)
+    return <p className="loading-text">Loading works...</p>;
+
   return (
     <div>
       <h2 className="head-text">
         My personal <span>Highlights</span>
       </h2>
+
+      {error && <p style={{ color: "red" }}>Failed to load works: {error}</p>}
+
       <div className="app__work-filter">
         {WORKS.map((s, i) => (
           <button
@@ -101,11 +109,11 @@ function Work() {
             }
           }}
         >
-          {works
+          {safeWorks
             .filter(
               (work) =>
                 filter.includes("All") ||
-                work.tags.some((tag) => filter.includes(tag))
+                work.tags.some((tag) => filter.includes(tag as WorkId))
             )
             .map((s, i) => (
               <motion.div
@@ -119,10 +127,12 @@ function Work() {
                 transition={{ duration: 0.4, ease: "easeInOut" }}
               >
                 <div className="app__work-img app__flex">
-                  <img
-                    src={urlFor(s.imgUrl)}
-                    alt={`portfolio item image "${s.title}-${i}"`}
-                  />
+                  {!error && (
+                    <img
+                      src={urlFor(s.imgUrl)}
+                      alt={`portfolio item image "${s.title}-${i}"`}
+                    />
+                  )}
                   <motion.div
                     className="app__work-hover app__flex"
                     initial={{

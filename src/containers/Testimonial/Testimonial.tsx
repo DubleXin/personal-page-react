@@ -2,9 +2,10 @@ import "./Testimonial.scss";
 import { motion } from "framer-motion";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import { AppWrap, MotionWrap } from "../../wrapper";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { urlFor } from "../../../lib/sanityPublic/client";
-import axios from "axios";
+import { useCacheApi } from "../../hooks/useCacheApi";
+import { images } from "../../constants";
 
 type TestimonialType = {
   name: string;
@@ -21,53 +22,80 @@ type BrandType = {
 
 // eslint-disable-next-line react-refresh/only-export-components
 function Testimonial() {
-  const [brands, setBrands] = useState<BrandType[]>([]);
-  const [testimonials, setTestimonials] = useState<TestimonialType[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  useEffect(() => {
-    const fetchSectionData = async () => {
-      axios
-        .get<TestimonialType[]>("/api/getTestimonial")
-        .then((res) => {
-          if (Array.isArray(res.data)) return setTestimonials(res.data);
-          throw new Error("API response is not an array");
-        })
-        .catch((e) =>
-          console.error(
-            `API error while fetching data for 'testimonial' section: ${e}`
-          )
-        );
-      axios
-        .get<BrandType[]>("/api/getBrand")
-        .then((res) => {
-          if (Array.isArray(res.data)) return setBrands(res.data);
-          throw new Error("API response is not an array");
-        })
-        .catch((e) =>
-          console.error(
-            `API error while fetching data for 'brand' section: ${e}`
-          )
-        );
-    };
-    fetchSectionData();
-  }, []);
+
+  const {
+    data: testimonials,
+    loading: testimonialsLoading,
+    error: testimonialsError,
+  } = useCacheApi<TestimonialType[]>("/api/getTestimonial", "testimonials");
+
+  const {
+    data: brands,
+    loading: brandsLoading,
+    error: brandsError,
+  } = useCacheApi<BrandType[]>("/api/getBrand", "brands");
+
+  const safeTestimonials =
+    testimonials && Array.isArray(testimonials)
+      ? testimonials
+      : [
+          {
+            name: "ERROR",
+            company: "Error.co",
+            feedback: "error . . .",
+            imgUrl: images.api,
+          },
+        ];
+
+  const safeBrands =
+    brands && Array.isArray(brands)
+      ? brands
+      : [
+          {
+            _id: "ERROR_BRAND_ID",
+            name: "ERROR",
+            imgUrl: images.api,
+          },
+        ];
+
   function onTestimonialButtonCLick(nextIndex: number = 0): void {
     setCurrentIndex(nextIndex);
   }
+
+  if (testimonialsLoading && !testimonials)
+    return <p className="loading-text">Loading testimonials...</p>;
+
+  if (brandsLoading && !brands)
+    return <p className="loading-text">Loading brands...</p>;
+
   return (
     <div>
-      {testimonials.length > 0 && (
+      {testimonialsError && (
+        <p style={{ color: "red" }}>
+          Failed to load testimonials: {testimonialsError}
+        </p>
+      )}
+      {safeTestimonials.length > 0 && (
         <div className="app__testimonial-container">
           <div className="app__testimonial-item app__flex">
-            <img
-              src={urlFor(testimonials[currentIndex].imgUrl)}
-              alt="Testimonial"
-            />
+            {!testimonialsError && (
+              <img
+                src={urlFor(safeTestimonials[currentIndex].imgUrl)}
+                alt="Testimonial"
+              />
+            )}
             <div className="app__testimonial-content">
-              <p className="p-text">{testimonials[currentIndex].feedback}</p>
+              <p className="p-text">
+                {safeTestimonials[currentIndex].feedback}
+              </p>
               <div>
-                <h4 className="bold-text">{testimonials[currentIndex].name}</h4>
-                <h5 className="p-text">{testimonials[currentIndex].company}</h5>
+                <h4 className="bold-text">
+                  {safeTestimonials[currentIndex].name}
+                </h4>
+                <h5 className="p-text">
+                  {safeTestimonials[currentIndex].company}
+                </h5>
               </div>
             </div>
           </div>
@@ -77,7 +105,9 @@ function Testimonial() {
               className="app__flex"
               onClick={() =>
                 onTestimonialButtonCLick(
-                  currentIndex == 0 ? testimonials.length - 1 : currentIndex - 1
+                  currentIndex == 0
+                    ? safeTestimonials.length - 1
+                    : currentIndex - 1
                 )
               }
             >
@@ -88,7 +118,9 @@ function Testimonial() {
               className="app__flex"
               onClick={() =>
                 onTestimonialButtonCLick(
-                  currentIndex == testimonials.length - 1 ? 0 : currentIndex + 1
+                  currentIndex == safeTestimonials.length - 1
+                    ? 0
+                    : currentIndex + 1
                 )
               }
             >
@@ -98,9 +130,13 @@ function Testimonial() {
         </div>
       )}
 
-      {brands.length > 0 && (
+      {brandsError && (
+        <p style={{ color: "red" }}>Failed to load brands: {brandsError}</p>
+      )}
+
+      {safeBrands.length > 0 && (
         <div className="app__flex app__testimonials-brands">
-          {brands.map((s) => (
+          {safeBrands.map((s) => (
             <motion.div
               key={s._id}
               whileInView={{
@@ -111,7 +147,9 @@ function Testimonial() {
                 type: "tween",
               }}
             >
-              <img src={urlFor(s.imgUrl)} alt={`${s.name} logo`} />
+              {!brandsError && (
+                <img src={urlFor(s.imgUrl)} alt={`${s.name} logo`} />
+              )}
             </motion.div>
           ))}
         </div>
