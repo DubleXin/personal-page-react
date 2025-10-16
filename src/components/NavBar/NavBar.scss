@@ -53,7 +53,7 @@
       transition: background-size 0.5s;
 
       &:hover {
-        color: rgb(var(--secondary-color));
+        color: rgb(var(--brown-color));
         --underline-width: 80%;
       }
     }
@@ -68,7 +68,7 @@
   height: 35px;
   border-radius: 50%;
 
-  background-color: rgba(var(--secondary-color), 0.5);
+  background-color: rgba(var(--brown-color), 0.5);
 
   display: flex;
   justify-content: center;
@@ -105,7 +105,7 @@
     svg {
       height: 35px;
       width: 35px;
-      color: rgb(var(--secondary-color));
+      color: rgb(var(--brown-color));
       margin: 0.5rem 1rem;
     }
 
@@ -139,7 +139,7 @@
         transition: background-size 0.5s;
 
         &:hover {
-          color: var(--secondary-color);
+          color: var(--brown-color);
           --underline-width: 80%;
         }
       }

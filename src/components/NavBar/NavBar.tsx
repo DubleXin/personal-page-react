@@ -5,12 +5,14 @@ import { HiMenuAlt4, HiX } from "react-icons/hi";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { TABS } from "../../constants";
+import { useTheme } from "../../hooks/useTheme";
 
 function NavBar() {
   const [toggle, setToggle] = useState(false);
-  function onMenuStateToggle() {
+  const { theme, toggleTheme } = useTheme();
+  const onMenuStateToggle = () => {
     setToggle(!toggle);
-  }
+  };
   return (
     <nav className="app__navbar">
       <div className="app__navbar-logo">
@@ -24,6 +26,9 @@ function NavBar() {
           </li>
         ))}
       </ul>
+      <button onClick={toggleTheme} className="theme-toggle">
+        {theme === "light" ? "🌙 Switch to Dark" : "☀️ Switch to Light"}
+      </button>
       {toggle && (
         <motion.div
           initial={{
