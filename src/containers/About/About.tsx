@@ -1,10 +1,9 @@
 import "./About.scss";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
 import { images } from "../../constants";
-import axios from "axios";
 import { urlFor } from "../../../lib/sanityPublic/client";
 import { AppWrap, MotionWrap } from "../../wrapper";
+import { useCacheApi } from "../../hooks/useCacheApi";
 
 type AboutsType = {
   title: string;
@@ -14,35 +13,23 @@ type AboutsType = {
 
 // eslint-disable-next-line react-refresh/only-export-components
 function About() {
-  const [abouts, setAbouts] = useState<AboutsType[]>([]);
-
-  useEffect(() => {
-    const fetchAbouts = async () => {
-      try {
-        const res = await axios.get<AboutsType[]>("/api/getAbout");
-
-        if (Array.isArray(res.data)) {
-          setAbouts(res.data);
-        } else {
-          throw new Error("API response is not an array");
-        }
-      } catch (e) {
-        console.error(
-          `API error while fetching data for 'about' section: ${e}`
-        );
-        setAbouts([
+  const {
+    data: abouts,
+    loading,
+    error,
+  } = useCacheApi<AboutsType[]>("/api/getAbout", "abouts");
+  const safeAbouts =
+    abouts && Array.isArray(abouts)
+      ? abouts
+      : [
           {
             title: "ERROR",
             description: "Could not load abouts",
             imgUrl: images.api,
           },
-        ]);
-      }
-    };
-
-    fetchAbouts();
-  }, []);
-
+        ];
+  if (loading && !abouts)
+    return <p className="loading-text">Loading abouts...</p>;
   return (
     <div>
       <h2 className="head-text">
@@ -50,8 +37,9 @@ function About() {
         <span>Good Business</span>
       </h2>
 
+      {error && <p style={{ color: "red" }}>Failed to load abouts: {error}</p>}
       <div className="app__profile">
-        {abouts.map((s, i) => (
+        {safeAbouts.map((s, i) => (
           <motion.div
             className="app__profile-item"
             key={`profile-item-${s.title}-${i}`}
@@ -70,7 +58,9 @@ function About() {
               type: "tween",
             }}
           >
-            <img src={urlFor(s.imgUrl)} alt={`profile image ${s.title}`} />
+            {!error && (
+              <img src={urlFor(s.imgUrl)} alt={`profile image ${s.title}`} />
+            )}
             <h2
               className="bold-text"
               style={{
