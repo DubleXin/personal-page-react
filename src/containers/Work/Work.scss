@@ -17,8 +17,8 @@
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 0.5rem;
-    background-color: rgb(var(--white-color));
-    color: rgb(var(--black-color));
+    background-color: rgb(var(--background-color));
+    color: rgb(var(--text-color));
     font-weight: 800;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -48,8 +48,8 @@
     margin: 2rem;
     padding: 1rem;
     border-radius: 0.5rem;
-    background-color: rgb(var(--white-color));
-    color: rgb(var(--black-color));
+    background-color: rgb(var(--background-color));
+    color: rgb(var(--text-color));
 
     transition: all 0.3s ease;
     cursor: pointer;
@@ -126,7 +126,7 @@
     position: absolute;
     padding: 0.5rem 1rem;
     border-radius: 10px;
-    background-color: rgb(var(--white-color));
+    background-color: rgb(var(--background-color));
     top: -25px;
     @media screen and (min-width: 2000px) {
       top: -50px;

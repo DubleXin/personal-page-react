@@ -5,7 +5,7 @@
   justify-content: space-between;
 
   padding: 1rem 2rem;
-  background-color: rgba(var(--white-color), 0.2);
+  background-color: rgba(var(--background-color), 0.2);
 
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -13,6 +13,10 @@
   border: rgba(var(--white-color), 0.18);
   position: fixed;
   z-index: 10;
+  @media screen and (max-width: 900px) {
+    justify-content: flex-end;
+    gap: 0 1rem;
+  }
 }
 
 .app__navbar-logo {
@@ -26,6 +30,9 @@
     @media screen and (min-width: 2000px) {
       width: 180px;
     }
+  }
+  @media screen and (max-width: 900px) {
+    margin-right: auto;
   }
 }
 
@@ -53,7 +60,7 @@
       transition: background-size 0.5s;
 
       &:hover {
-        color: rgb(var(--secondary-color));
+        color: rgb(var(--accent-color));
         --underline-width: 80%;
       }
     }
@@ -68,7 +75,7 @@
   height: 35px;
   border-radius: 50%;
 
-  background-color: rgba(var(--secondary-color), 0.5);
+  background-color: rgba(var(--accent-color), 0.5);
 
   display: flex;
   justify-content: center;
@@ -105,7 +112,7 @@
     svg {
       height: 35px;
       width: 35px;
-      color: rgb(var(--secondary-color));
+      color: rgb(var(--accent-color));
       margin: 0.5rem 1rem;
     }
 
@@ -139,7 +146,7 @@
         transition: background-size 0.5s;
 
         &:hover {
-          color: var(--secondary-color);
+          color: var(--accent-color);
           --underline-width: 80%;
         }
       }
@@ -189,4 +196,33 @@
   height: 100vh;
   backdrop-filter: blur(9px);
   -webkit-backdrop-filter: blur(9px);
+}
+
+.theme-toggle {
+  background-color: rgba(var(--background-color), 0.1);
+  border-radius: 0.45rem;
+  border: 0.1rem solid rgb(var(--accent-color));
+  outline: none;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.1rem 0.5rem;
+  width: 5rem;
+  gap: 0.5rem;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  .theme-barrier {
+    background-color: rgba(var(--accent-color), 0.7);
+    height: 1rem;
+    width: 30%;
+    border-radius: 0.25rem;
+    flex: 2;
+    transition: all 0.2s ease-in-out;
+  }
+  p {
+    flex: 1;
+    transition: all 0.2s ease-in-out;
+  }
+}
+.theme-toggle-active {
+  flex-direction: row-reverse;
 }

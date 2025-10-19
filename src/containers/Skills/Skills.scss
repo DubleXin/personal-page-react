@@ -46,7 +46,7 @@
     width: 90px;
     height: 90px;
     border-radius: 50%;
-    background-color: rgb(var(--white-color));
+    background-color: rgb(var(--background-color));
 
     img {
       width: 50%;
@@ -54,7 +54,7 @@
     }
 
     &:hover {
-      box-shadow: 0 0 25px #f3f4f5;
+      box-shadow: 0 0 25px rgb(var(--background-secondary-color));
     }
     @media screen and (min-width: 2000px) {
       width: 150px;

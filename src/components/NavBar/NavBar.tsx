@@ -5,12 +5,17 @@ import { HiMenuAlt4, HiX } from "react-icons/hi";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { TABS } from "../../constants";
+import { useTheme } from "../../hooks/useTheme";
 
 function NavBar() {
   const [toggle, setToggle] = useState(false);
-  function onMenuStateToggle() {
+  const { theme, toggleTheme } = useTheme();
+  const onMenuStateToggle = () => {
     setToggle(!toggle);
-  }
+  };
+
+  const onThemeButtonClick = () => toggleTheme();
+
   return (
     <nav className="app__navbar">
       <div className="app__navbar-logo">
@@ -24,6 +29,15 @@ function NavBar() {
           </li>
         ))}
       </ul>
+      <button
+        onClick={onThemeButtonClick}
+        className={`theme-toggle app__flex ${
+          theme === "dark" ? "theme-toggle-active" : ""
+        }`}
+      >
+        <div className="theme-barrier" />
+        <p className="p-text">{theme === "light" ? "Dark" : "Light"}</p>
+      </button>
       {toggle && (
         <motion.div
           initial={{
