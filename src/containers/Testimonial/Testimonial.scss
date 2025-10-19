@@ -14,7 +14,7 @@
 .app__testimonial-item {
   width: 60%;
   min-height: 320px;
-  background-color: rgb(var(--white-color));
+  background-color: rgb(var(--background-color));
 
   display: flex;
   flex: 2;
@@ -61,7 +61,7 @@
   p {
     font-size: 1.25rem;
     line-height: 2rem;
-    color: rgb(var(--black-color));
+    color: rgb(var(--text-color));
     font-family: var(--font-base);
   }
   h4 {
@@ -84,7 +84,7 @@
     height: 50px;
     border: none;
     border-radius: 50%;
-    background-color: rgb(var(--white-color));
+    background-color: rgb(var(--background-color));
     margin: 1rem;
     transition: all 0.3s ease-in-out;
     svg {

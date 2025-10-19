@@ -13,6 +13,9 @@ function NavBar() {
   const onMenuStateToggle = () => {
     setToggle(!toggle);
   };
+
+  const onThemeButtonClick = () => toggleTheme();
+
   return (
     <nav className="app__navbar">
       <div className="app__navbar-logo">
@@ -26,8 +29,14 @@ function NavBar() {
           </li>
         ))}
       </ul>
-      <button onClick={toggleTheme} className="theme-toggle">
-        {theme === "light" ? "🌙 Switch to Dark" : "☀️ Switch to Light"}
+      <button
+        onClick={onThemeButtonClick}
+        className={`theme-toggle app__flex ${
+          theme === "dark" ? "theme-toggle-active" : ""
+        }`}
+      >
+        <div className="theme-barrier" />
+        <p className="p-text">{theme === "light" ? "Dark" : "Light"}</p>
       </button>
       {toggle && (
         <motion.div

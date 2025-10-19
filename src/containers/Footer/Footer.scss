@@ -22,7 +22,7 @@
     padding: 1rem;
     border-radius: 10px;
     cursor: pointer;
-    background-color: #fef4f5;
+    background-color: rgba(var(--primary-color), 0.5);
     transition: all 0.3s ease-in-out;
     img {
       width: 40px;
@@ -37,7 +37,7 @@
       font-weight: 500;
     }
     &:hover {
-      box-shadow: 0 0 25px #fef4f5;
+      box-shadow: 0 0 25px rgb(var(--background-secondary-color));
     }
     @media screen and (max-width: 450px) {
       width: 90%;
@@ -53,7 +53,7 @@
 }
 
 .app__footer-cards .app__footer-card:last-child {
-  background-color: #f2f7fb;
+  background-color: rgba(var(--secondary-color), 0.9);
 }
 
 .app__footer-form {
@@ -65,7 +65,7 @@
     margin: 0.75rem 0;
     border-radius: 10px;
     cursor: pointer;
-    background-color: rgb(var(--primary-color));
+    background-color: rgba(var(--background-secondary-color), 0.7);
     transition: all 0.3sec ease-in-out;
     padding-bottom: 0.5rem;
     input,
@@ -74,7 +74,7 @@
       padding: 1rem;
       border: none;
       border-radius: 7px;
-      background-color: rgba(var(--white-color), 0.8);
+      background-color: rgba(var(--background-secondary-color), 0.9);
 
       font-family: var(--font-base);
       color: rgb(var(--secondary-color));
@@ -89,7 +89,7 @@
       resize: none;
     }
     &:hover {
-      box-shadow: 0 0 25px rgb(var(--primary-color));
+      box-shadow: 0 0 25px rgb(var(--background-secondary-color));
       scale: 1.01;
     }
   }

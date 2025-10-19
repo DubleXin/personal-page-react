@@ -57,8 +57,9 @@
 
   .badge-cmp,
   .tag-cmp {
+    background-color: rgb(var(--background-color));
     padding: 1rem 2rem;
-    border: 0px none rgb(var(--white-color));
+    border: 0px none rgb(var(--background-color));
     border-radius: 15px;
     flex-direction: row;
     width: auto;
@@ -97,7 +98,7 @@
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background-color: rgb(var(--white-color));
+    background-color: rgb(var(--background-color));
     box-shadow: 0 0 20px rgba(var(--black-color), 0.1);
     img {
       width: 65%;

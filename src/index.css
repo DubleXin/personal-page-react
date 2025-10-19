@@ -19,20 +19,26 @@
   --black-color: 9, 18, 27;
   --lightGray-color: 228, 228, 228;
   --gray-color: 107, 118, 136;
-  --brown-color: 101, 155, 220;
+  --accent-color: 101, 155, 220;
   --white-color: 244, 246, 251;
+  --background-color: 244, 246, 251;
+  --background-secondary-color: 237, 242, 248;
+  --text-color: 9, 18, 27;
 }
 
 :root[data-theme="dark"] {
   --font-base: "DM Sans", sans-serif;
 
-  --primary-color: 7, 12, 18;
-  --secondary-color: 27, 60, 105;
-  --black-color: 228, 237, 246;
-  --lightGray-color: 228, 228, 228;
-  --gray-color: 107, 118, 136;
-  --brown-color: 35, 88, 154;
-  --white-color: 4, 6, 11;
+  --primary-color: 206, 195, 154;
+  --secondary-color: 56, 99, 117;
+  --black-color: 9, 18, 27;
+  --lightGray-color: 189, 195, 203;
+  --gray-color: 164, 171, 183;
+  --accent-color: 120, 110, 185;
+  --white-color: 244, 246, 251;
+  --background-color: 22, 19, 11;
+  --background-secondary-color: 45, 43, 35;
+  --text-color: 244, 240, 232;
 }
 
 * {
