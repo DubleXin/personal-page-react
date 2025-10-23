@@ -1,7 +1,11 @@
 import "./Header.scss";
-import { motion } from "framer-motion";
+import { motion, stagger } from "framer-motion";
 import { images } from "../../constants";
-import { AppWrap } from "../../wrapper";
+import Wings from "../../assets/wings.svg?react";
+import { FaNodeJs, FaReact } from "react-icons/fa";
+import { BiLogoPostgresql } from "react-icons/bi";
+
+const MotionWings = motion.create(Wings);
 
 const scaleVariants = {
   hidden: {
@@ -20,7 +24,6 @@ const scaleVariants = {
   },
 };
 
-// eslint-disable-next-line react-refresh/only-export-components
 function Header() {
   return (
     <div id="home" className="app__header app__flex">
@@ -40,7 +43,7 @@ function Header() {
       >
         <div className="app__header-badge">
           <div className="badge-cmp app__flex">
-            <span>🤘</span>
+            <span>░▒▓</span>
             <div style={{ marginLeft: 20 }}>
               <p className="p-text">Hello, I am </p>
               <h1 className="head-text">Oleksandr</h1>
@@ -63,24 +66,15 @@ function Header() {
         transition={{
           duration: 0.5,
           ease: "easeIn",
-          delayChildren: 0.3,
+          delayChildren: stagger(0.3),
         }}
       >
-        <img src={images.profile} alt="profile-bg"></img>
-        <motion.img
-          className="overlay-circle"
-          src={images.circle}
-          alt="profile_circle"
-          initial={{
-            scale: 0,
-          }}
-          whileInView={{
-            scale: [0, 1],
-          }}
-          transition={{
-            duration: 1,
-            ease: "easeInOut",
-          }}
+        <img src={images.profile} alt="profile-bg" />
+        <MotionWings
+          className="overlay-icon"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1 }}
         />
       </motion.div>
       <motion.div
@@ -88,9 +82,10 @@ function Header() {
         whileInView={scaleVariants.visible.whileInView}
         className="app__header-circles"
       >
-        {[images.flutter, images.redux, images.sass].map((s, i) => (
+        {[<FaNodeJs />, <FaReact />, <BiLogoPostgresql />].map((s, i) => (
           <div className="circle-cmp app__flex" key={`header-circle-${i}`}>
-            <img src={s} alt="technology-circle" />
+            {s}
+            {/* <img src={s} alt="technology-circle" /> */}
           </div>
         ))}
       </motion.div>
@@ -98,5 +93,4 @@ function Header() {
   );
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
-export default AppWrap(Header, "home");
+export default Header;

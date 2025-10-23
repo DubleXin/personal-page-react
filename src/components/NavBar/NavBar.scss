@@ -24,8 +24,9 @@
   justify-content: flex-start;
   align-items: center;
 
-  img {
+  svg {
     width: 90px;
+    fill: rgb(var(--accent-color));
 
     @media screen and (min-width: 2000px) {
       width: 180px;
@@ -49,7 +50,7 @@
     text-transform: uppercase;
     a {
       text-decoration: none;
-      color: rgb(var(--gray-color));
+      color: rgb(var(--gray-text-color));
       transition: color 0.3s ease-in;
       font-weight: 500;
 
@@ -88,15 +89,8 @@
   }
 
   div {
-    background: rgba(var(--white-color), 0.7);
-    backdrop-filter: blur(9px);
-    -webkit-backdrop-filter: blur(9px);
+    background: rgb(var(--background-color));
     border-radius: 20px;
-    border: 1px solid rgba(var(--white-color), 0.3);
-    box-shadow: 0 8px 32px rgba(var(--black-color), 0.1),
-      inset 0 1px 0 rgba(var(--white-color), 0.5),
-      inset 0 -1px 0 rgba(var(--white-color), 0.1),
-      inset 0 0 28px 14px rgba(var(--white-color), 1.4);
     overflow: hidden;
 
     position: fixed;
@@ -131,7 +125,7 @@
       }
       a {
         text-decoration: none;
-        color: rgb(var(--gray-color));
+        color: rgb(var(--text-color));
 
         font-size: 1rem;
         text-transform: uppercase;
@@ -151,34 +145,6 @@
         }
       }
     }
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(var(--white-color), 0.8),
-        transparent
-      );
-    }
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 1px;
-      height: 100%;
-      background: linear-gradient(
-        180deg,
-        rgba(var(--white-color), 0.8),
-        transparent,
-        rgba(var(--white-color), 0.3)
-      );
-    }
   }
 
   @media screen and (min-width: 900px) {
@@ -186,7 +152,7 @@
   }
 }
 .app__bg-overlay {
-  background-color: rgba(var(--black-color), 0.15);
+  background-color: rgba(var(--text-color), 0.15);
   position: fixed;
   z-index: 5;
   top: 0;
@@ -221,6 +187,13 @@
   p {
     flex: 1;
     transition: all 0.2s ease-in-out;
+    color: rgb(var(--gray-text-color));
+  }
+  @media screen and (min-width: 2000px) {
+    width: 8rem;
+    .theme-barrier {
+      height: 2rem;
+    }
   }
 }
 .theme-toggle-active {

@@ -24,10 +24,13 @@
     cursor: pointer;
     background-color: rgba(var(--primary-color), 0.5);
     transition: all 0.3s ease-in-out;
-    img {
+    svg {
       width: 40px;
       height: 40px;
       margin: 0 0 0.7rem;
+      fill: rgb(var(--accent-color));
+      margin: 0.1rem;
+      transition: all 0.3s ease-in-out;
     }
     p {
       font-weight: 600;
@@ -38,6 +41,9 @@
     }
     &:hover {
       box-shadow: 0 0 25px rgb(var(--background-secondary-color));
+      svg {
+        fill: rgb(var(--text-color));
+      }
     }
     @media screen and (max-width: 450px) {
       width: 90%;
@@ -53,7 +59,7 @@
 }
 
 .app__footer-cards .app__footer-card:last-child {
-  background-color: rgba(var(--secondary-color), 0.9);
+  background-color: rgba(var(--secondary-color), 0.7);
 }
 
 .app__footer-form {

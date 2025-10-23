@@ -13,6 +13,9 @@
   --background-color: 244, 246, 251;
   --background-secondary-color: 237, 242, 248;
   --text-color: 9, 18, 27;
+  --lightGray-text-color: 228, 228, 228;
+  --gray-text-color: 91, 91, 91;
+  --wing-color: 56, 99, 117;
 }
 
 :root[data-theme="dark"] {
@@ -28,6 +31,9 @@
   --background-color: 22, 19, 11;
   --background-secondary-color: 45, 43, 35;
   --text-color: 244, 240, 232;
+  --lightGray-text-color: 228, 228, 228;
+  --gray-text-color: 205, 205, 205;
+  --wing-color: 56, 99, 117;
 }
 
 * {
