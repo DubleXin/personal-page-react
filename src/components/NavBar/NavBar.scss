@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: space-between;
 
-  padding: 1rem 2rem;
+  padding: 0 2rem;
   background-color: rgba(var(--background-color), 0.2);
 
   backdrop-filter: blur(4px);
@@ -13,7 +13,7 @@
   border: rgba(var(--white-color), 0.18);
   position: fixed;
   z-index: 10;
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1200px) {
     justify-content: flex-end;
     gap: 0 1rem;
   }
