@@ -97,7 +97,7 @@ function Work() {
         transition={{
           duration: 0.5,
           ease: "easeIn",
-          delayChildren: 0.3,
+          delayChildren: stagger(0.3),
         }}
       >
         <AnimatePresence

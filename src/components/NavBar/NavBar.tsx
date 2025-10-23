@@ -1,11 +1,13 @@
 import "./NavBar.scss";
-import { images } from "../../constants";
 
 import { HiMenuAlt4, HiX } from "react-icons/hi";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { TABS } from "../../constants";
 import { useTheme } from "../../hooks/useTheme";
+import LogoFull from "../../assets/logo-full.svg?react";
+
+const LogoFullMotion = motion.create(LogoFull);
 
 function NavBar() {
   const [toggle, setToggle] = useState(false);
@@ -19,7 +21,7 @@ function NavBar() {
   return (
     <nav className="app__navbar">
       <div className="app__navbar-logo">
-        <img src={images.logo} alt="logo"></img>
+        <LogoFullMotion />
       </div>
 
       <ul className="app__navbar-links">

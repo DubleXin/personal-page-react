@@ -1,8 +1,8 @@
 import "./Footer.scss";
 import { useState } from "react";
-import { images } from "../../constants";
 import { AppWrap, MotionWrap } from "../../wrapper";
 import axios from "axios";
+import { MdEmail, MdPhoneEnabled } from "react-icons/md";
 
 type FormType = {
   name: string;
@@ -55,13 +55,15 @@ function Footer() {
       <h2 className="head-text">Take coffee & chat with me </h2>
       <div className="app__footer-cards">
         <div className="app__footer-card">
-          <img src={images.email} alt="email icon" />
+          <MdEmail />
+
           <a href="mailto:oleksandrhrechuk@gmail.com" className="p-text">
             oleksandrhrechuk@gmail.com
           </a>
         </div>
         <div className="app__footer-card">
-          <img src={images.mobile} alt="phone icon" />
+          <MdPhoneEnabled />
+
           <a href="tel: +48 (886) 753-813" className="p-text">
             +48 (886) 753-813
           </a>
