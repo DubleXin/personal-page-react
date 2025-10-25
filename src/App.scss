@@ -1,5 +1,5 @@
 .app {
-  background-color: rgb(var(--background-color));
+  background-color: transparent;
   font-family: var(--font-base);
 }
 
@@ -9,6 +9,9 @@
 
 .app__primarybg {
   background-color: rgb(var(--background-secondary-color));
+}
+.app__transparentbg {
+  background: transparent;
 }
 
 .app__container {

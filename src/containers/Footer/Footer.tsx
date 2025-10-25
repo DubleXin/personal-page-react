@@ -24,7 +24,6 @@ function Footer() {
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ): void {
     const { name, value } = event.target;
-    console.log(`${name} => ${value}`);
 
     setFormData({
       ...formData,
@@ -52,7 +51,10 @@ function Footer() {
 
   return (
     <>
-      <h2 className="head-text">Take coffee & chat with me </h2>
+      <div className="app__footer-head-text">
+        <h2 className="head-text">Take coffee & chat with me </h2>
+      </div>
+
       <div className="app__footer-cards">
         <div className="app__footer-card">
           <MdEmail />
@@ -116,5 +118,5 @@ function Footer() {
 export default AppWrap(
   MotionWrap(Footer, "app__footer"),
   "contact",
-  "app__whitebg"
+  "app__transparentbg"
 );

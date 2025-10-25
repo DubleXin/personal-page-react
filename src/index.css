@@ -2,7 +2,6 @@
 
 :root[data-theme="light"] {
   --font-base: "DM Sans", sans-serif;
-
   --primary-color: 237, 242, 248;
   --secondary-color: 150, 182, 228;
   --black-color: 9, 18, 27;
@@ -41,4 +40,8 @@
   padding: 0;
   margin: 0;
   scroll-behavior: smooth;
+}
+
+:root {
+  background-color: rgb(var(--background-color));
 }
