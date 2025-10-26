@@ -3,7 +3,7 @@ const TABS = [
   "about",
   "work",
   "skills",
-  "testimonials",
+  // "testimonials",
   "contact",
 ] as const;
 

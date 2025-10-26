@@ -20,6 +20,8 @@ type ExperienceType = {
   year: string;
   works: WorkExperienceType[];
 };
+
+const IS_EXPERIENCE_DISPLAYED = false;
 // eslint-disable-next-line react-refresh/only-export-components
 function Skills() {
   const {
@@ -69,7 +71,9 @@ function Skills() {
 
   return (
     <div>
-      <h2 className="head-text">Skills & Experience</h2>
+      <h2 className="head-text">
+        Skills {IS_EXPERIENCE_DISPLAYED && "& Experience"}
+      </h2>
 
       {skillsError && (
         <p style={{ color: "red" }}>Failed to load skills: {skillsError}</p>
@@ -106,47 +110,49 @@ function Skills() {
           ))}
         </motion.div>
 
-        <motion.div className="app__skills-exp">
-          {safeExperience
-            .sort((a, b) => parseInt(a.year) - parseInt(b.year))
-            .map((exp, i) => (
-              <motion.div
-                className="app__skills-exp-item"
-                key={`exp-item-${exp.year}-${i}`}
-              >
-                <div className="app__skills-exp-year">
-                  <p className="bolt-text">{exp.year}</p>
-                </div>
-                <motion.div className="app__skills-exp-works">
-                  {exp.works.map((s) => (
-                    <div key={`exp-works-item-${s.name}`}>
-                      <motion.div
-                        data-tooltip-id={s.name}
-                        className="app__skills-exp-work"
-                        whileInView={{
-                          opacity: [0, 1],
-                        }}
-                        transition={{
-                          duration: 0.5,
-                        }}
-                      >
-                        <h4 className="bold-text">{s.name}</h4>
-                        <p className="p-text">{s.company}</p>
-                      </motion.div>
-                      <Tooltip
-                        id={s.name}
-                        float={true}
-                        arrowColor="#fff"
-                        className="skills-tooltip"
-                      >
-                        {s.desc}
-                      </Tooltip>
-                    </div>
-                  ))}
+        {IS_EXPERIENCE_DISPLAYED && (
+          <motion.div className="app__skills-exp">
+            {safeExperience
+              .sort((a, b) => parseInt(a.year) - parseInt(b.year))
+              .map((exp, i) => (
+                <motion.div
+                  className="app__skills-exp-item"
+                  key={`exp-item-${exp.year}-${i}`}
+                >
+                  <div className="app__skills-exp-year">
+                    <p className="bolt-text">{exp.year}</p>
+                  </div>
+                  <motion.div className="app__skills-exp-works">
+                    {exp.works.map((s) => (
+                      <div key={`exp-works-item-${s.name}`}>
+                        <motion.div
+                          data-tooltip-id={s.name}
+                          className="app__skills-exp-work"
+                          whileInView={{
+                            opacity: [0, 1],
+                          }}
+                          transition={{
+                            duration: 0.5,
+                          }}
+                        >
+                          <h4 className="bold-text">{s.name}</h4>
+                          <p className="p-text">{s.company}</p>
+                        </motion.div>
+                        <Tooltip
+                          id={s.name}
+                          float={true}
+                          arrowColor="#fff"
+                          className="skills-tooltip"
+                        >
+                          {s.desc}
+                        </Tooltip>
+                      </div>
+                    ))}
+                  </motion.div>
                 </motion.div>
-              </motion.div>
-            ))}
-        </motion.div>
+              ))}
+          </motion.div>
+        )}
       </div>
     </div>
   );

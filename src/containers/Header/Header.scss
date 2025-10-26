@@ -21,7 +21,7 @@
   height: 100%;
   padding: 6rem 2rem 0;
   @media screen and (max-width: 600px) {
-    padding: 6rem 1rem 2rem;
+    padding: 6rem 1rem 0;
   }
   @media screen and (max-width: 1200px) {
     flex-direction: column;
@@ -138,6 +138,7 @@
     }
   }
   @media screen and (max-width: 1200px) {
+    display: none;
     width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
