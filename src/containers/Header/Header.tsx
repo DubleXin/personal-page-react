@@ -85,7 +85,6 @@ function Header() {
         {[<FaNodeJs />, <FaReact />, <BiLogoPostgresql />].map((s, i) => (
           <div className="circle-cmp app__flex" key={`header-circle-${i}`}>
             {s}
-            {/* <img src={s} alt="technology-circle" /> */}
           </div>
         ))}
       </motion.div>

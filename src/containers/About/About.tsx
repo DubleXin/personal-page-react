@@ -33,8 +33,8 @@ function About() {
   return (
     <div>
       <h2 className="head-text">
-        I Know that <span>Good Development</span> <br /> means{" "}
-        <span>Good Business</span>
+        Good design is <span>Visible</span> <br /> Great development is{" "}
+        <span>Felt</span>
       </h2>
 
       {error && <p style={{ color: "red" }}>Failed to load abouts: {error}</p>}

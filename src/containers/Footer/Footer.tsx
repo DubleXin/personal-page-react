@@ -52,7 +52,7 @@ function Footer() {
   return (
     <>
       <div className="app__footer-head-text">
-        <h2 className="head-text">Take coffee & chat with me </h2>
+        <h2 className="head-text">Let's mix ideas and caffeine</h2>
       </div>
 
       <div className="app__footer-cards">
@@ -73,7 +73,9 @@ function Footer() {
       </div>
 
       {isFormSubmitted ? (
-        <h3 className="head-text">Thank you for getting in touch!</h3>
+        <div className="app__footer-head-text">
+          <h3 className="head-text">Thank you for getting in touch!</h3>
+        </div>
       ) : (
         <div className="app__footer-form app__flex">
           <div className="app__flex">

@@ -161,6 +161,6 @@ function Testimonial() {
 // eslint-disable-next-line react-refresh/only-export-components
 export default AppWrap(
   MotionWrap(Testimonial, "app__testimonial"),
-  "testimonials",
+  /*"testimonials"*/ "home",
   "app__primarybg"
 );

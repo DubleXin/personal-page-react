@@ -21,8 +21,11 @@ export default function ParallaxBackground({
   const to = direction === "up" ? -Math.abs(intensity) : Math.abs(intensity);
   const y = useTransform(scrollYProgress, [0, 1], [0, to]);
 
-  const opacity = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [0, 1, 1, 0]);
-
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.1, 0.9, 1, 1.2],
+    [0, 1, 1, 0.6, 0]
+  );
   return (
     <div ref={ref} className="parallax-wrap">
       <motion.div className="parallax-bg" style={{ y, opacity }} aria-hidden />
